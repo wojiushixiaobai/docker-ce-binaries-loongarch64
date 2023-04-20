@@ -98,8 +98,8 @@ RUN set -ex; \
 WORKDIR /opt
 RUN set -ex; \
     chmod +x docker/*; \
-    tar -zcvf docker-${DOCKER_VERSION#*v}.tar.gz docker; \
-    echo $(md5sum docker-${DOCKER_VERSION#*v}.tar.gz) > docker-${DOCKER_VERSION#*v}.tar.gz.md5; \
+    tar -czf docker-${DOCKER_VERSION#*v}.tgz docker; \
+    echo $(md5sum docker-${DOCKER_VERSION#*v}.tgz) > docker-${DOCKER_VERSION#*v}.tgz.md5; \
     rm -rf docker
 
 FROM debian:buster-slim
@@ -110,7 +110,7 @@ WORKDIR /opt
 
 RUN set -ex; \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime; \
-    cat docker-${DOCKER_VERSION#*v}.tar.gz.md5
+    cat docker-${DOCKER_VERSION#*v}.tgz.md5
 
 VOLUME /dist
 
