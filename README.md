@@ -10,8 +10,6 @@
 
 - [ ] https://github.com/containerd/containerd/tree/v1.7.0
 - [ ] https://github.com/cilium/ebpf/blob/v0.9.1
-- [x] https://github.com/cilium/ebpf/blob/v0.9.2
-- [x] https://github.com/cilium/ebpf/blob/v0.9.3
 
 ## docker
 - [x] https://github.com/docker/cli/tree/v23.0.0
