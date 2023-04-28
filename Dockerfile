@@ -6,7 +6,7 @@ FROM golang:1.19-buster AS builder
 
 ARG RUNC_VERSION=v1.1.5 \
     CONTAINERD_VERSION=v1.6.20 \
-    DOCKER_VERSION=v23.0.4 \
+    DOCKER_VERSION=v23.0.5 \
     TINI_VERSION=v0.19.0
 
 ENV GOPROXY=https://goproxy.io,direct \
