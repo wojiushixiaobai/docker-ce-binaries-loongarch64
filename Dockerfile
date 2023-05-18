@@ -4,9 +4,9 @@
 
 FROM golang:1.19-buster AS builder
 
-ARG RUNC_VERSION=v1.1.5 \
-    CONTAINERD_VERSION=v1.6.20 \
-    DOCKER_VERSION=v23.0.5 \
+ARG RUNC_VERSION=v1.1.7 \
+    CONTAINERD_VERSION=v1.6.21 \
+    DOCKER_VERSION=v23.0.6 \
     TINI_VERSION=v0.19.0
 
 ENV GOPROXY=https://goproxy.io,direct \
