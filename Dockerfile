@@ -25,8 +25,7 @@ RUN set -ex; \
     git clone -b ${RUNC_VERSION} https://github.com/opencontainers/runc --depth=1
 
 WORKDIR /go/src/github.com/opencontainers/runc
-RUN cp -rf /usr/local/go/src/cmd/vendor/golang.org/x/sys/unix vendor/golang.org/x/sys/; \
-    sed -i 's@|| s390x@|| s390x || loong64@g' libcontainer/system/syscall_linux_64.go; \
+RUN sed -i 's@|| s390x@|| s390x || loong64@g' libcontainer/system/syscall_linux_64.go; \
     sed -i 's@riscv64 s390x@riscv64 s390x loong64@g' libcontainer/system/syscall_linux_64.go; \
     sed -i 's@--dirty @@g' Makefile; \
     make static; \
