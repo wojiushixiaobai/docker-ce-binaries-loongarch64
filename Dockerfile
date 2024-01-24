@@ -2,11 +2,11 @@
 # https://github.com/wojiushixiaobai/docker-loongnix-artifacts/tree/master/debian/buster-slim
 # https://github.com/wojiushixiaobai/docker-library-loong64/blob/master/golang/1.19/slim-buster/Dockerfile
 
-FROM golang:1.20-buster AS builder
+FROM golang:1.21-buster AS builder
 
-ARG RUNC_VERSION=v1.1.9
-ARG CONTAINERD_VERSION=v1.7.6
-ARG DOCKER_VERSION=v24.0.7
+ARG RUNC_VERSION=v1.1.11
+ARG CONTAINERD_VERSION=v1.7.12
+ARG DOCKER_VERSION=v25.0.1
 ARG TINI_VERSION=v0.19.0
 
 ENV GOPROXY=https://goproxy.io,direct \
@@ -96,7 +96,7 @@ RUN set -ex; \
     rm -rf docker
 
 FROM debian:buster-slim
-ARG DOCKER_VERSION=v24.0.2
+ARG DOCKER_VERSION=v25.0.1
 
 COPY --from=builder /opt /opt
 WORKDIR /opt
