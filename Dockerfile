@@ -4,9 +4,9 @@
 
 FROM golang:1.20-buster AS builder
 
-ARG RUNC_VERSION=v1.1.9
-ARG CONTAINERD_VERSION=v1.7.6
-ARG DOCKER_VERSION=v24.0.7
+ARG RUNC_VERSION=v1.1.12
+ARG CONTAINERD_VERSION=v1.7.15
+ARG DOCKER_VERSION=v26.1.1
 ARG TINI_VERSION=v0.19.0
 
 ENV GOPROXY=https://goproxy.io,direct \
@@ -58,9 +58,6 @@ RUN set -ex; \
 
 WORKDIR /go/src/github.com/docker/docker
 RUN mkdir bin; \
-    sed -i 's@|| riscv64@|| riscv64 || loong64@g' vendor/github.com/cilium/ebpf/internal/endian_le.go; \
-    sed -i 's@ppc64le riscv64@ppc64le riscv64 loong64@g' vendor/github.com/cilium/ebpf/internal/endian_le.go; \
-    sed -i 's@GITCOMMIT-unsupported@GITCOMMIT@g' hack/make.sh; \
     VERSION=${DOCKER_VERSION#*v} ./hack/make.sh; \
     ./bundles/binary-daemon/dockerd -v; \
     cp -rf bundles/binary-daemon bin/; \
