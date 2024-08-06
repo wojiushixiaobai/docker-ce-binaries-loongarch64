@@ -2,7 +2,9 @@
 # https://github.com/wojiushixiaobai/docker-loongnix-artifacts/tree/master/debian/buster-slim
 # https://github.com/wojiushixiaobai/docker-library-loong64/blob/master/golang/1.19/slim-buster/Dockerfile
 
-FROM golang:1.20-buster AS builder
+ARG GO_VERSION=1.21
+
+FROM golang:${GO_VERSION}-buster AS builder
 
 ARG RUNC_VERSION=v1.1.12
 ARG CONTAINERD_VERSION=v1.7.15
