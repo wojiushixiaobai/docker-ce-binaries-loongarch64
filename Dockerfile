@@ -6,9 +6,9 @@ ARG GO_VERSION=1.21
 
 FROM golang:${GO_VERSION}-buster AS builder
 
-ARG RUNC_VERSION=v1.1.12
-ARG CONTAINERD_VERSION=v1.7.15
-ARG DOCKER_VERSION=v26.1.1
+ARG RUNC_VERSION=v1.1.13
+ARG CONTAINERD_VERSION=v1.7.21
+ARG DOCKER_VERSION=v27.2.0
 ARG TINI_VERSION=v0.19.0
 
 ENV GOPROXY=https://goproxy.io,direct \
@@ -95,7 +95,7 @@ RUN set -ex; \
     rm -rf docker
 
 FROM debian:buster-slim
-ARG DOCKER_VERSION=v24.0.2
+ARG DOCKER_VERSION=v27.2.0
 
 COPY --from=builder /opt /opt
 WORKDIR /opt
